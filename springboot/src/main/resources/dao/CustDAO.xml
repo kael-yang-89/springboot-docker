@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.springboot.dao.CustDAO">
+    <resultMap id="selectOneCust" type="com.yang.springboot.entity.Cust">
+        <result column="cust_id" property="cust_id" jdbcType="VARCHAR"></result>
+        <result column="workdate" property="workdate" jdbcType="VARCHAR"></result>
+        <result column="phone" property="phone" jdbcType="VARCHAR"></result>
+        <result column="sex" property="sex" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <sql id="Base_Column_List">
+        cust_id,
+        workdate,
+        phone,
+        sex
+    </sql>
+    <select id="selectCust" resultMap="selectOneCust">
+        select
+        <include refid="Base_Column_List"></include>
+        from cust
+        where cust_id='0618139675'
+    </select>
+</mapper>

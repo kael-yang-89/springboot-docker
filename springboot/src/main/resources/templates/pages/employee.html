@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>员工信息</title>
+</head>
+<body>
+<table align='center' border='1' cellspacing='0'>
+    <tr>
+        <td>employee_id</td>
+        <td>first_name</td>
+        <td>last_name</td>
+        <td>email</td>
+        <td>phone_number</td>
+    </tr>
+        <tr th:each="s:${ee}">
+            <td th:text="${s.employee_id}">1</td>
+            <td th:text="${s.first_name}">2</td>
+            <td th:text="${s.last_name}">3</td>
+            <td th:text="${s.email}">4</td>
+            <td th:text="${s.phone_number}">5</td>
+        </tr>
+</table>
+</body>
+</html>

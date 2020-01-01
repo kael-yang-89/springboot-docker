@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.springboot.dao.EmployeeDAO">
+    <resultMap id="selectOneEmployee" type="com.yang.springboot.entity.Employee">
+        <id column="employee_id" property="employee_id" jdbcType="INTEGER"></id>
+        <result column="first_name" property="first_name" jdbcType="VARCHAR"></result>
+        <result column="last_name" property="last_name" jdbcType="VARCHAR"></result>
+        <result column="email" property="email" jdbcType="VARCHAR"></result>
+        <result column="phone_number" property="phone_number" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <sql id="Base_Column_List">
+        employee_id,
+        first_name,
+        last_name,
+        email,
+        phone_number
+    </sql>
+    <select id="selectEmployeeById" parameterType="integer" resultMap="selectOneEmployee">
+        select
+        <include refid="Base_Column_List"></include>
+        from EMPLOYEES
+        where employee_id=#{employee_id}
+    </select>
+
+    <select id="selectEmployeeByName" parameterType="string" resultMap="selectOneEmployee">
+        select
+        <include refid="Base_Column_List"></include>
+        from EMPLOYEES
+        where first_name=#{first_name}
+    </select>
+
+    <select id="selectEmployeeByMap" parameterType="map" resultMap="selectOneEmployee">
+        select
+        <include refid="Base_Column_List"></include>
+        from EMPLOYEES
+        where first_name=#{first_name}
+        and last_name=#{last_name}
+    </select>
+
+</mapper>
